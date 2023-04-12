@@ -18,3 +18,4 @@ dotenv = "0.15.0"
 rust-ini = "0.17.0"
 # Error handling
 thiserror = "1.0.30"
+cargo-update = "13.0.1"
