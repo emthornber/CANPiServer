@@ -1,0 +1,119 @@
+:root {
+    font-size: calc(0.5em + 1vw);
+    box-sizing: border-box;
+    --main-bg: AliceBlue;
+    --main-fg: MidnightBlue;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Garamond, Georgia, serif;
+}
+
+body * + * {
+    margin-top: 1.5em;
+}
+header {
+    padding: 1em 1.5em;
+    border-right: 0.5em;
+    background-color: var(--main-bg);
+    color: var(--main-fg);
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    margin: 0;
+}
+
+/* the menu container */
+.sidebar {
+    width: 20%;
+    display: block;
+    padding: 1em;
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: var(--main-bg);
+}
+
+.content {
+    width: 80%;
+    padding: 1em 1.5em;
+    margin: 0;
+    border-right: 0.5em;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* menu links */
+.sidebar li a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 0.5em;
+    text-decoration: none;
+}
+
+.sidebar li a:active {
+    background-color: var(--main-fg);
+    color: var(--main-bg);
+}
+
+/* links - change colour on hover */
+.sidebar li a:hover:not(a:active) {
+    background-color: BurlyWood;
+    color: AntiqueWhite;
+}
+
+footer {
+    padding: 1em 1.5em;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    background-color: var(--main-bg);
+    color: var(--main-fg);
+    text-align: center;
+}
+
+footer a {
+    font-family: Consolas, Monaco, monospace;
+}
+
+.dark {
+    margin-top: 2em;
+    padding: 1em;
+    background-color: #999;
+    --main-bg: #333;
+    --main-color: #fff;
+}
+
+.panel {
+    font-size: 1rem;
+    padding: 1em;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    background-color: var(--main-bg);
+    color: var(--main-fg);
+}
+
+.panel > h2 {
+    margin-top: 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.panel.large {
+    font-size: 1.2em;
+}

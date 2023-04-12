@@ -1,0 +1,160 @@
+:root {
+    font-size: calc(0.5em + 1vw);
+    box-sizing: border-box;
+    --main-bg: AliceBlue;
+    --main-fg: MidnightBlue;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: Garamond, Georgia, serif;
+}
+
+body * + * {
+    margin-top: 1.5em;
+}
+
+.item1 {
+    grid-area: header;
+    margin: 0;
+    padding: 1em 1.5em;
+    border-right: 0.5em;
+    color: var(--main-fg);
+}
+.item2 {
+    grid-area: menu;
+    margin: 0;
+    padding: 1em;
+    overflow: hidden;
+}
+.item2 ul {
+    list-style-type: none;
+    margin: 0;
+    display: block;
+    padding: 0;
+}
+
+/* menu links */
+.item2 li a {
+    text-align: center;
+    padding: 0.5em;
+    text-decoration: none;
+}
+
+.item2 li a:active {
+    background-color: var(--main-fg);
+    color: var(--main-bg);
+}
+
+/* links - change colour on hover */
+.item2 li a:hover:not(a:active) {
+    background-color: BurlyWood;
+    color: AntiqueWhite;
+}
+
+.item3 {
+    grid-area: content;
+    padding: 1em 1.5em;
+    margin: 0;
+}
+.item4 {
+    grid-area: footer;
+    padding: 1em 1.5em;
+    margin: 0;
+    color: var(--main-fg);
+}
+
+.item4 p { margin: 0 }
+
+.item4 a {
+    font-family: Consolas, Monaco, monospace;
+}
+
+.item5 {
+    grid-area: rlogo;
+    padding: 1em 1.5em;
+    margin: 0;
+}
+
+.item6 {
+    grid-area: mlogo;
+    padding: 1em 1.5em;
+    margin: 0;
+}
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'rlogo header  header  header'
+        'menu  content content content'
+        'mlogo footer  footer  footer';
+    gap: 0.25em;
+    background-color: var(--main-bg);
+    padding: 0.5em;
+}
+
+.grid-container > div {
+    background-color: var(--main-bg);
+    text-align: center;
+    padding: 1em 0;
+}
+
+.merglogo {
+    bottom: 0;
+    margin: 0;
+}
+
+.rpilogo {
+    top: 0;
+    margin: 0;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 10em;
+    background-color: var(--main-fg);
+    color: var(--main-bg);
+    text-align: center;
+    padding: 0.5em 0;
+    border-radius: 0.5em;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -5em;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -0.25em;
+    border-width: 0.25em;
+    border-style: solid;
+    border-color: var(--main-fg) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

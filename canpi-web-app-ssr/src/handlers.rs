@@ -1,9 +1,8 @@
 use actix_web::{web, Error, HttpResponse, Result};
-use ini::Ini;
+use canpi_config::*;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::Mutex;
-use tera::Tera;
 
 use crate::state::AppState;
 use crate::errors::CanPiAppError;
@@ -12,7 +11,7 @@ pub async fn status_handler(
     app_state: web::Data<Mutex<AppState>>,
     tmpl: web::Data<tera::Tera>,
 ) -> Result<HttpResponse, Error> {
-    let mut app_state = app_state.lock().unwrap();
+    let app_state = app_state.lock().unwrap();
     let mut ctx = tera::Context::new();
     ctx.insert("layout_name", &app_state.layout_name);
     let s = tmpl
@@ -23,7 +22,8 @@ pub async fn status_handler(
 
 #[derive(Serialize, Deserialize)]
 pub struct Attribute {
-    name: String,
+    prompt: String,
+    tooltip: String,
     value: String,
 }
 
@@ -31,10 +31,11 @@ pub async fn display_config(
     app_state: web::Data<Mutex<AppState>>,
     tmpl: web::Data<tera::Tera>,
 ) -> Result<HttpResponse, Error> {
-    let mut attributes: HashMap<String, String> = HashMap::new();
-    let mut app_state = app_state.lock().unwrap();
-    for ( n, v ) in app_state.canpi_cfg.general_section().iter() {
-        attributes.insert(String::from(n), String::from(v));
+    let mut attributes: Vec<Attribute> = Vec::new();
+    let app_state = app_state.lock().unwrap();
+    for ( n, v ) in app_state.canpi_cfg.attributes_with_action(ActionBehaviour::Display).iter() {
+        let attr = Attribute{ prompt: v.prompt.clone(), tooltip: v.tooltip.clone(), value: v.current.clone() };
+        attributes.push(attr );
     }
     let mut ctx = tera::Context::new();
     ctx.insert("layout_name", &app_state.layout_name);

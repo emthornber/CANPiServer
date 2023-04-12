@@ -2,17 +2,47 @@
 <html lang="en">
 <head>
     {% block head %}
-    <link rel="stylesheet" href="../static/main.css" />
+    <link rel="stylesheet" href="../static/canpigrid.css"/>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock title %} - CANPi Server</title>
     {% endblock head %}
 </head>
 <body>
-    <div id="content">{% block content %}{% endblock content %}</div>
-    <div id="footer">
+<div class="grid-container">
+    <div class="item5">
+        <div class="rpilogo">
+            <img src="../static/rpi.png" alt="Raspberry Pi Logo" width="70" height="90">
+        </div>
+    </div>
+    <div class="item1">
+        <h1>CANPi Server</h1>
+    </div>
+    <div class="item2">
+        {% block menu %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="static">Files</a></li>
+            <li><a href="config">Configuration</a></li>
+        </ul>
+        {% endblock menu %}
+    </div>
+    <div class="item3">
+        <div>{% block content %}{% endblock content %}</div>
+    </div>
+    <div class="item6">
+        <div class="merglogo">
+            <img src="../static/merg_logo.png" alt="MERG Logo" width="140" height="55"><br>
+        </div>
+    </div>
+    <div class="item4">
         {% block footer %}
-        &copy; Copyright 2022 by <a href="mailto:cornwall@merg.org.uk">MERG Cornwall AG</a>
+        <p>
+            <br>
+            &copy; Copyright 2022 by
+            <a href="https://www.merg.org.uk/contactus.php">Model Electronic Railway Group</a>
+        </p>
         {% endblock footer %}
     </div>
+</div>
 </body>
 </html>
