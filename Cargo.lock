@@ -689,6 +689,7 @@ dependencies = [
  "chrono",
  "dotenv",
  "hostname",
+ "lazy_static 1.4.0",
  "rust-ini",
  "serde",
  "tera",
