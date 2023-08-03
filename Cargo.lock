@@ -683,7 +683,6 @@ dependencies = [
 [[package]]
 name = "canpi-config"
 version = "0.1.3"
-source = "git+https://github.com/emthornber/canpi-config.git?branch=lgtrunk#056a74e3d688726dde61e8dc43406c4066ad4473"
 dependencies = [
  "anyhow",
  "backitup",
@@ -700,7 +699,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "canpi-ssr"
+name = "canpi-web-app-ssr"
 version = "0.1.0"
 dependencies = [
  "actix-files",
