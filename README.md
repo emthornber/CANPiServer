@@ -1,10 +1,8 @@
 # CANPiServer
 
-A rewrite of CANPiWi using Rust and the creation of Debian packages (.deb) to automate the installation process.
-
-A collection of crates to support MERG CANPiCap and CANPiZero interface boards on Raspberry Pi.
+This repository has been split into two new repositories - canpi-web-app-ssr and canpi-web-service - and archived.
 
 Mark Thornber
 MERG Member 3748
 merg.org.uk
-August 2023
+October 2023
